@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  --80sBrown: hsl(42, 50%, 85%);
+  --brown: hsl(30, 25%, 20%);
+  --gold: #c9a74e;
+  --red: #9c2f2f;
+  --space-md: 1rem;
+  --shadow: 0 10px 30px rgba(0,0,0,0.45);
+  --slight_corner_curve: 3px;
+}
+
+main {
+  display: flex;
+  flex-direction: column; /* stack top-to-bottom */
+  align-items: center;    /* center horizontally */
+  justify-content: flex-start;
+  gap: 2rem;
+  min-height: 100vh;
+
+ 
+}
+
+.read-only-section {
+  pointer-events: none;
+  opacity: 0.5;
+  background: #da7510;
+}
+
+.is-hidden {
+  display: none;
+}
+
+li.selected {
+  background-color: #042ca7;
+  color: antiquewhite;
+  border: 0.5px solid var(--brown);
+}
+
+li:hover {
+  background-color: #e09040;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 0.5px solid var(--brown);
+}
+
+body {
+  font-family: 'VT323', monospace;
+  font-size: medium;
+  background-color: var(--80sBrown);
+
+
+  color: var(--brown);
+  padding: var(--space-md);
+}
+
+button {
+  background-color: var(--brown);
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  border-radius:var(--slight_corner_curve);
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+  width: 10em;
+  height: 3em;
+  box-shadow:var(--shadow);
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.5);
+}
+
+button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+
+
+#character_creation,#note_logger,#levelling,#weapon_repo {
+margin-bottom: 1em;
+  border: 15px double rgba(154, 72, 22, 0.903);
+  border-radius:var(--slight_corner_curve);
+  
+}
+
+#character_creation::before {
+content: "";
+position: absolute;
+display: block;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+background: repeating-linear-gradient(215deg, #372d2d, #ffca3a, #1b230e 39.92%, #ae830b 60.08%, #150b23 79.83%, #efb909);
+background-size: 900%;
+z-index: -3;
+border-radius: var(--border-radius);
+transform: translate3d(0, 0, 0);
+}
+
+.player1-creation,.player1-note,.player1-levelling,.weapon-shop.note-selection {
+  flex-direction: row;
+  display: flex;  
+}
+
+.button-wrapper {
+ flex-direction: column;
+ display: flex;  
+}
+
+
+
+.IO-wrapper {
+  display: flex;  
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+  font-size: medium;
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 1em;
+}
+
+.weapon-shop {
+  display: flex;
+  gap: 3rem; 
+
+}
+
+.player-info-card {
+  position: relative;
+  background-color: aliceblue;
+  color: var(--brown);
+  border: 2px solid var(--gold);
+  border-radius: var(--slight_corner_curve);
+  padding: 1rem;
+  margin-left: 3rem;
+  margin-right: 1rem;
+  width: 15rem;
+  height: 14rem;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
+  
+}
+
+
+.player-info {
+  position: absolute;
+  font-size: medium;
+  line-height: 0.2;
+}
+
+#player_info_name,#player1_name,#player2_name {
+  background-color: rgb(4, 60, 97);
+  color: #d39e3a;
+  border-radius: var(--slight_corner_curve);
+  width: 7em;
+  height: 1em;
+}
+
+.xp-gp-tally {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0em;
+}
+progress {
+  border-radius: 7px; 
+  width: 12em;
+  height: 1em;
+  box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+}
+progress::-webkit-progress-bar {
+  background-color: yellow;
+  border-radius: 7px;
+}
+progress::-webkit-progress-value {
+  background-color: blue;
+  border-radius: 7px;
+  box-shadow: 1px 1px 5px 3px rgba( 255, 0, 0, 0.8 );
+}
+#player_info_wallet {
+position: absolute;
+margin-left: 5em;
+}
+
+#player_chest {
+overflow-y: auto;
+flex: 2 1 0;
+padding: 0.5em;
+border: 2px solid var(--gold);
+border-radius: var(--slight_corner_curve);
+color: #085051;
+background: ghostwhite;
+width: 14em;
+height: 12em;
+max-width: 14em;
+max-height: 12em;
+}
+.note-selection button {
+  width: fit-content ;
+}
+
+#note_number {
+height: 3em;
+width: 3em;
+}
+
+#add_note,#character_name {
+height: 3em;
+width: 30em;
+}
+
+
+.inventory-wrapper {
+align-items: flex-start;
+display: flex;  
+flex-direction: row;
+margin-bottom: 1em;
+}
+
+#weapon_chest,#weapon_desc,#player1_chest {
+flex: content;
+overflow-y: auto;
+flex: 2 1 0;
+padding: 0.5em;
+border: 2px solid var(--gold);
+border-radius:var(--slight_corner_curve);
+color: #085051;
+background: white;
+width: 30vw;
+height: 20vh;
+max-width: 30vw;
+max-height: 30vh;
+margin-bottom: 1em;
+}
+
+#floating_section {
+
+ position: fixed;
+top: 10em;
+right: 10em;
+width: 60em;
+height: 30em;
+background-color: var(--80sBrown);
+padding: 15px;
+outline: 3px solid black;
+z-index: 2;
+}
+
+#floating_section::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    45deg,
+    #ff595e,
+    #ffca3a,
+    #8ac926,
+    #1982c4,
+    #6a4c93,
+    #ff6700
+  );
+  background-size: 400%;
+  z-index: -2;
+  animation: glow 20s linear infinite;
+  border-radius: var(--border-radius);
+transform: translate3d(0, 0, 0); 
+
+}
+
+
+@keyframes glow {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+
+.fighter-cards {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+   position: relative;
+  background-color: aliceblue;
+  color: var(--brown);
+  border: 2px solid var(--gold);
+  border-radius: var(--slight_corner_curve);
+z-index: -1;
+
+}
+
+.loser-card {
+  position: relative;
+  display: block;
+  background-color: rgb(63, 114, 159);
+  color: whitesmoke;
+  border: 2px solid var(--red);
+  border-radius: var(--slight_corner_curve);
+  padding: 1rem;
+  margin-left: 3rem;
+  margin-right: 1rem;
+  width: 15rem;
+  height: 14rem;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
+  animation: rotate 8s linear infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hit-player-info-card {
+  position: absolute;
+  background-color: rgb(5, 179, 48);
+  color: whitesmoke;
+  border: 3px solid var(--gold);
+  border-radius: var(--slight_corner_curve);
+  padding: 1rem;
+  margin-left: 3rem;
+  margin-right: 1rem;
+  width: 15rem;
+  height: 14rem;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
+  z-index: 3;
+  transition: background-color 1s ease-in-out;
+}
+
+@keyframes horizontal-shaking {
+ 0% { transform: translateX(0) }
+ 25% { transform: translateX(15px) }
+ 50% { transform: translateX(-5px) }
+ 75% { transform: translateX(15px) }
+ 100% { transform: translateX(0) }
+}
+
+
+#battle_box {  
+  overflow-y: auto;
+  overflow-x: auto;
+  outline: 4px dotted green;
+  background-color: var(--brown);
+  color: antiquewhite;
+  margin-top: 1rem;
+  height: 120px;
+  width: 600px;
+
+}
+#prep_battle1 {
+  background-color: #9c2f2f;
+  position: fixed;
+  margin-top: 5rem;
+  margin-left: 1rem;
+  
+}
+#prep_battle2 {
+    background-color: #4913ac;
+position: absolute;
+   margin-top: 10rem;
+  margin-left: 1rem;
+}
+#fight_start {
+  background-color: #282ff4;
+position: absolute;
+   margin-top: 15rem;
+  margin-left: 1rem;
+}
+
+
+#win_loss_screen {
+   background: linear-gradient(
+    90deg,
+    var(--brown) 0%,
+    var(--gold) 50%,
+    var(--brown) 100%
+  );
+ position: fixed;
+top: 40em;
+right: 10em;
+width: 15em;
+height: 5em;
+color: #dec2c2;
+background-color: var(--brown);
+padding: 15px;
+outline-width: 5px;
+  outline-offset: 0;
+  outline-color: rgba(5, 137, 213, 0.75);
+  outline-style: solid;
+  animation: animateOutline 1s reverse infinite;
+z-index: 3;
+}
+
+@keyframes animateOutline {
+  0% {
+    outline-width: 1px;
+    outline-offset: 0px;
+    outline-color: rgb(153, 132, 12);
+  }
+
+  5% {
+    outline-width: 2px;
+    outline-offset: 1px;
+    outline-color: rgb(153, 132, 12);
+  }
+  10% {
+    outline-width: 3px;
+    outline-offset: 2px;
+    outline-color: rgba(230, 119, 23, 0.966);
+  }
+
+  /* The animation finishes at 50% */
+  50% {
+    outline-width: 5px;
+    outline-offset: 3px;
+    outline-color: rgb(231, 122, 59);
+  }
+
+  75% {
+    outline-width: 6px;
+    outline-offset: 4px;
+    outline-color: rgb(231, 122, 59);
+  }
+
+  100% {
+    outline-width: 7px;
+    outline-offset: 5px;
+    outline-color: rgba(187, 15, 15, 0.957);
+  }
+}

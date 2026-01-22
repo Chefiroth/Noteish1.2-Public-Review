@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <!-- The lang attribute helps screen readers and spell checkers; keep it accurate. -->
+  <head>
+    <!-- Character encoding: UTF-8 is the safe default for modern web apps. -->
+    <meta charset="UTF-8">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Single stylesheet for this page. Keep tokens/variables in :root within style.css. -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Load JavaScript as an ES module. No inline handlers — logic is in main.js. -->
+    <script type="module" src="./mainTest1.js"></script>
+
+    <!-- Title shown in the browser tab. Keep it short and specific. -->
+    <title> Noteish charater system 1.2 </title>
+   </head>
+
+   <body>
+<section id="area_selecttion_buttons">
+<button id="notes_screen">Notes</button>
+<button id="xp_lvl_screen">Xp-Lvl</button>
+<button id="shop_screen">Shop</button>
+<button id="floating_screen">Float</button>
+</section>
+
+
+<section id="character_creation">
+    <h3>Create a Charater</h3>
+    <button id="player1_btn" >Player1</button>
+    <button id="player2_btn" >Player2</button>
+    
+    <div class="player1-creation">
+
+    <div class="button-wrapper">
+      <button id="createNewPlayer">creation</button>
+      <button id="summarisePlayer" disabled>summary</button>
+      <button id="deletePlayer" disabled>delete</button>
+      <button id="equip_weapon" disabled>Weapon eq</button>
+      <button id="auto_eq" disabled>Auto eq</button>
+    </div>
+
+    <div class="IO-wrapper">
+      <input id="character_name" name="character_name" type="text" placeholder="enter name" maxlength="10">
+      
+      <textarea id="first_box" name="first_box" rows="4" cols="60" placeholder="Character area" readonly></textarea>
+      <textarea id="forth_box" name="forth_box " rows="6" cols="60" placeholder="psuedo shopping" readonly></textarea>
+
+    </div>
+
+    <div class="player-info-card">
+    <article id="player_info" class="player-info">
+      <h1 id="player_info_name">Name:-</h1>
+      <p id="player_info_level">Level:-</p>
+      <p id="player_info_weapon">Weapon:-</p>
+      <p id="player_info_gear">Gear:-</p>
+      <p id="player_info_attack">Attack:-</p>
+      <p id="player_info_armour">Armour:-</p>
+      <p id="player_info_agility">Agility:-</p>
+      
+          <progress id="xp_bar"  value="0" max="100"></progress>
+
+            <div class="xp-gp-tally">
+              <p id="min_xp" value="0">MinXP</p>
+              <P>/</P>
+              <p id="max_xp">MaxXP</p>
+              
+              <p id="player_info_wallet">Wallet:-</p>  
+            </div>
+            
+    </article>
+        </div>
+          
+    <article class="player-info-card">
+      <div id="player_chest_id">Chest</div>
+      <div id="player_chest"></div>
+    </article>
+
+    </div>
+</section>
+    
+
+<section id="note_logger" class="is-hidden"> 
+    <h3>Leave a Note</h3>
+    <div class="player1-note">
+
+    <div class="button-wrapper">
+      <button id="createNote" disabled>add note</button>
+      <button id="printNote" disabled>print note</button>
+      <button id="deleteNote" disabled>delete note</button>
+    </div>
+
+    <div class="IO-wrapper">
+
+      <div class="note-selection">
+        <input id="note_number" name="note_number" type="number" min="0" max="5" >
+        <button id="note1" disabled>Note 1</button>
+        <button id="note2" disabled>Note 2</button>
+        <button id="note3" disabled>Note 3</button>
+        <button id="note4" disabled>Note 4</button>
+        <button id="note5" disabled>Note 5</button>
+        <button id="note_all" disabled>Note All</button>  
+      </div>
+
+        <input id="add_note" name="add_note" type="text" maxlength="50" placeholder="add a note">
+        <textarea id="second_box" name="second_box" rows="6" cols="60" placeholder="Note area" readonly></textarea>
+    </div>
+
+    </div>
+</section>
+
+<section id="levelling" class="is-hidden">
+    <h3>Level your Character</h3>
+    <div class="player1-levelling">
+
+    <div class="button-wrapper">
+      <button id="xp_gain" disabled>add xp</button>
+    </div>   
+      
+    <div class="IO-wrapper">
+      <input id="xp_points" name="xp_points" type="number" step="100" min="100" max="500">
+      <textarea id="third_box" name="third_box " rows="6" cols="60" placeholder="xp and levelling area" readonly></textarea>
+    </div>
+
+    </div>
+</section>   
+
+<section id="weapon_repo" class="is-hidden">   
+    <h3>Weapon Repository</h3>
+    <div class="weapon-shop">
+      
+    <div class="button-wrapper">
+      <button id="buy" disabled>Buy</button>
+    </div>
+
+  
+      <div id="weapon_chest" class="weapon_inventory">Weapon Repo</div>
+      <div id="weapon_desc" class="weapon_inventory">Weapon Desc</div>    
+
+    </div>
+</section>  
+
+<section id="floating_section" class="is-hidden">
+
+  <div class="button-wrapper">
+<button id="prep_battle1">Prep Battle1</button>
+<button id="prep_battle2">Prep Battle2</button>
+<button id="fight_start">fight</button>
+<button id="reset_battle" type="reset">Reset</button>
+</div>
+
+
+<div id="fighter_cards" class="fighter-cards">
+<div class="player-info-card">
+    <article id="player1_battle_info" class="player-info">
+      <h1 id="player1_name">Name:-</h1>
+      <p id="player1_level">Level:-</p>
+      <p id="player1_weapon">Weapon:-</p>
+      <p id="player1_hp">Health:-</p>
+      <p id="player1_mp">Mana:-</p>
+      <p id="player1_attack">Attack:-</p>
+      <p id="player1_armour">Armour:-</p>
+      <p id="player1_agility">Agility:-</p>
+      
+          <progress id="player1_xp_bar"  value="0" max="100"></progress>
+
+            <div class="xp-gp-tally">
+              <p id="player1_min_xp" value="0">MinXP</p>
+              <P>/</P>
+              <p id="player1_max_xp">MaxXP</p>
+            </div>
+            
+    </article>
+        </div>
+
+
+        <div class="player-info-card">
+    <article id="player2_battle_info" class="player-info">
+      <h1 id="player2_name">Name:-</h1>
+      <p id="player2_level">Level:-</p>
+      <p id="player2_weapon">Weapon:-</p>
+      <p id="player2_hp">Health:-</p>
+      <p id="player2_mp">Mana:-</p>
+      <p id="player2_attack">Attack:-</p>
+      <p id="player2_armour">Armour:-</p>
+      <p id="player2_agility">Agility:-</p>
+      
+          <progress id="player2_xp_bar"  value="0" max="100"></progress>
+
+            <div class="xp-gp-tally">
+              <p id="player2_min_xp" value="0">MinXP</p>
+              <P>/</P>
+              <p id="player2_max_xp">MaxXP</p>
+            </div>
+            
+    </article>
+        </div>
+</div>
+
+<div id="battle_box" ></div> 
+
+
+<div id="win_loss_screen" class="is-hidden">Game Over</div>
+</section>
+
+   </body>

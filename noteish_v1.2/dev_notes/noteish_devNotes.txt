@@ -1,0 +1,904 @@
+
+2/12/25
+
+Initially I was going to test rewrite the noteish logger to a cleaner code base and uiux.
+In the end i gave up on the idea of writing it with a creation class and manager class as separate modules, for separtion of concerns in use.
+I decided to see about writing a small character class with a personal note book. This could evolve to either a save page or just a set of notes for the character,
+as well as that I wanted to test my coding and write better setters and guards than i have before.
+
+Theres no major direction with this as yet....
+
+19.30pm 
+
+so far i have a character with a personal logger function built in....
+
+added a basic xpGain,levelling,equip and summary methods. 
+
+21:42
+
+Had a mini gpt PM code review, nothing big, just a light look at where i am heading/thinking...
+I like the current arrangement, they full understand that I can code to some level and like to have them be hands off overseers in there individual team(job).
+If i need help or teaching they'll always offer the best way to get me to learn, most times...🧙🏾‍♂️ occaisionally they get overzealous and dump info in me... 🤬
+
+anyway.... back to work... 📚🧙🏾‍♂️
+
+so far i have a character class than can create a character instance, log 1 to 5 notes, of 50 characters/letters each, look at any or all and delete as needed.
+it can also do rudementary xp gain> levelling > stat boosting, (auto)equip a weapon upon creation and level up.
+
+added a delete all into the method, dunno why i never had one before....
+
+3/12/25 00:22
+
+added a standard equip as well as having my standard auto equip function, atm its chosen by index number but upgrades may be tried...
+
+
+1:15am
+
+ok so as it currently stands a character can be created, write notes (5 max), i delete look at or delete one or all note(messages), 
+gain xp > level up to auto equip> re-equip lower level weapons and summarise.
+user and auto equips both add/swap the previous weapon to the chest.
+
+so far all methods are pretty rudementary, I'm not trying to write something perfect, just test myself with what is OR ISN'T possible...
+
+adding a manager module, just to see how i'd handle it. also moving files into context ready folders. 
+trying to fix the testing files to at least look more like real tests.
+
+thought of a way to write a manager thats simple but can handle the character(s) actions from xp>equip>add/delete/print Notes>ec...
+
+this way i can use one 'manager' to say what to do, to whom and by how much.... its a new step...
+
+manager can now showInventory() of any charater, add('borrow') items from the dataset and add to the characters chest, change equipment, xp+level gain, notes......
+showInventory() logs as 'empty' if the character has no weapons stashed.
+
+8:18am
+
+trying to return only data from the methods, so i can log just the bare data and use it later. 
+
+
+current struggles are around writing a narration manager and returning event shapes as object,
+so i can then grab the individual property data and use each piece as i want in narration or logging
+
+3/12/25 10am
+
+so far i have the add message and xp>level gain narration working well.
+I am using switch cases to choose basic narration choice for the time being....
+
+at some point i may have to think about a master constoller of sorts..... FUCK!📜😭🏴‍☠️🫠
+
+type setting/ecapsulation/enforcment... whatever its called it actually time consuming. I'm not in a rush and only learning via pracitce but damn, loool.
+
+destructuring every methods return/event and keeping type and structure going along all the diffent classes and methods is fun but fucked iup on my head and neck 🥲🤯
+
+13:00
+
+equip and auto-equip each have 3 narrations chosen with an rng roll.
+
+battle manager started, I want to understand as much about managing state and type handling manually, before ts and frameworks
+
+using logic from old code and updating where needed, I have come to understand that I will have a lot of method/functions utility or otherwise,
+that'll become reusable across multiple code bases. I have started to look at what ones I already reuse and am planning a day of logging and refactoring,
+to make each one a pure(ish) method/function.... not yet though...soon
+
+15:52 Personal reminder:
+
+This isnt a mini project with a disinct direction. This is me coming off of being fired and doing what I needed to so I stay sane and alive.
+The idea was born from always hearing about todo apps as mini projects and i realized i havent trully worked on small bits.
+i started my project journey by learning turn based rpg back-end logic. along the way i leaned about html and css and that lead to me messing with a shop.
+
+The shop system was born from the thoughts around working in resturants and seeing pos systems and looking at form based apps....
+I wrote most of my code with little gpt help, more and more i not just plan/architect the files, I can plan and execute the code, even debugging 70-80% of my own problems.
+I am at the point that, although i cant clearly articulate the code base, or write clean docs, I cant stare at the screen and run logs/event logs to find my own errors
+and find ways to fix things.
+
+Typescript will be studied slowly untill i feel ready to use it as an aid not as a crutch... 3/26
+Frameworks won't be far behind...
+
+
+4/12/25 3:20
+
+woke up randomly so i jumped on and finished the turnorder/entry announcer.
+The narrations choices are being kept simple with a rng roll or 1 to 3 and a swtich-case to pick a line of dialog based on the roll.
+testing comments added for a cleaner read, rng roll made a class method rather than always having each method control an individual roll function. 
+testing the use of methods to control different states starting with battle, but may lead to more testing. 
+
+19:04
+
+🧙🏾‍♂️
+taking time to play with the dom + js logic.
+nothing massive just expanding the sandbox, learning slowly to handle data types and state, without fucking breaking everything silently.
+
+🤯
+learning how the DOM handle back-end data, numbers are parsed as strings, the way destructuring works is MORE awkward than it should be....
+
+📚
+When I was writing this back-end i wrote all methods to return specific type/shapes to be used by other functions for use or output,
+via nesting functions or destrucuring the data type. im realising how hard and stressful but FUCKING FUN, it is to control typing 
+(hence the shit load of desrucuting and structuredclone()).
+Now though I have learn (i think) that the DOM is a cunt, and it will turn those destructures into objects(sometimes nested too), 
+so i had to start removing the destructuring and returning clean data for DOM output.
+
+💭
+Doing this while maintaining multiple modules and 4(so far) of them being manager class, is hard flipping work.
+But along doing this i am learing to realise where I am already handling typing and state managment. I hear this is the basis for TS and REACT(NATIVE)
+These are the things I heard about months ago and promised that I'd not take up tools/frameworks until i can feel comfortable in JS,HTML....and css(grumble)
+
+managing type and state is hurting atm, well just taking time to work out how to return the data back to the DOM without object destructuring. 
+I need the data cleanly sent to DOM for managed output. ATM this sand box seems pretty safe at the back end, there are some things to work out,
+but i wanted to take a JS break and fuck about with learning to control the DOM - AND NOT MUTATE DATA THERE 😂🧐
+
+5/12/25 12:40pm
+
+The DOM: so far all i am doing as adding one player ui test system:
+creation: 3 buttons:- Creation: w/ a name input, summary: play name and stats info, delete: sets (player = null) to remove all use of player data.
+          1 text area:- confirms button click action. 'xx created', 'xx..stats...', 'xx deleted'
+
+
+note logger: 3 buttons:- 2 text area 1 input type = number 
+             Currently working on the logging, the returning of data isnt working as i had expected from the DOM, some data has returned as objects,
+             and some not at all. And seeing as the DOM inspection throws no errors at times it harder for me to debug the issues.
+             Atm the slots filled and max message fire as needed but i need a guad to stop the max message writing more than once.
+
+13:28 🥳🧙🏾‍♂️📚📜
+             So one problem fixed. i couldn't get the added notes to output a save item although the slot filled message fired each time.
+             I was back and forth unsure of if i had returned the right values and types but what i slowly realise was that the message 'textarea' had a .value,
+             but i had added it to the document declaration! My mistake.... 
+             once i added it directly to the argument where it was being used i got a note printed.. fml 🤣
+
+
+14:58       for some reason when i now log the messages i end up logging 6 instead of 5 but 5 have the message filled notification and the 6th just has the number 6....
+
+            long story short.... i made a change in the if statments within the creation class.... 
+            This statement if (this.actualMessages.length >=Player.maxNumberOfMessages) was the basis for my choice of what to log,
+            once i change the log option to < and the max message operator to >= the logging stopped adding a 6th item... still weird in my head but... fuck it atm. WINNER 🏆
+
+15:53
+            trying to get the max note message to only log once was frustrating me as its not part of the characters notes array just an extra message... in the end(for now)
+            i just disabled the add note button once the maxNumberOfMessages has been reached....
+            Randomly i had a thought to move the if statment to the top of the listener and firing it first causes the ma messageto fire last before killing the button! WIN!
+
+            As of now, player one can be creaed and named or default is logged. a summary can be show and character can be deleted.
+            player one can create a fresh set of notes per each created character, new characters completley erase old note, no bleed over.
+
+            set up add delete and print message buttons and area, the add button disables after 5 messages with a max message shown. 
+            upon new character the button disables and the counter resets.... yes i had to write a small dom mutation but f'it
+
+
+19:43
+
+  still going with the add print and delete logic > dom. 
+
+  if you asked me exactly what i am or have been doing id fumble to tell you clearly but i am ON MY OWN, 
+  learning to keep rerurning clean data back to the dom as best as possible, no dom mutation.
+
+  getting the data through destructuring with nested functions is returning nest object data and i need all the values coming cleanly to the narration module.
+
+  note deletion and print guards in place so 'no notes to see' and 'all notes deleted' log in the right way
+
+  realsied i wrote a load of back-end guards and refactoring for notes but only the add function was refactored and passed to the narration module the rest work in house ffs.
+  so yh... i messed up... not a big issue just a quick throw around of code.. 👨🏾‍💻🧙🏾‍♂️
+
+21:31
+
+  although the print and delete worked well in the ui i have to refix them to run through the marration logic, which means getting back and returning the right data/type 📚🫠😭
+
+currently have an issue where the add and print work, the delete logs and deletes but doesnt log the 'no note to delete' message any more, 
+but once i delete all it fires once and locks up the output area... fffffsssss 🥲🧐🤬
+
+using switches for both the creator and narration classes in the print and delete logics, some how i got something mixed up or intertwined, 
+and now the button calls dont fire on certain pieces of logic, they'll log/narrate the prints and deletions but then wont properly accept the guards for already empty slots,
+until all is deleted then it acts the fool and does it but might crash.
+
+23:44
+
+Current almost all notes delete and log... all but the empty delete slot, for some reason it wont fire and if i write certain condition if breaks the entire codebase....
+
+6/12/25 1.00am
+
+I... WANT... TO... CUSS... SO... BADLY...
+ive been fighting my code for hours, trying to work out why i can't get the empty slot(deletion) message to fire.... fucking hours doing all sorts shape returns.....
+only to clock this....
+case(deletionConfirm === 'emptySlot') > return {deletionConfirm: 'emptyslot'....}
+
+S>s a damn S in the emptySlot destructure 😭😭😭🤣🤯🫠
+
+I could laugh and cry right now....
+
+kind of messed up by removing the referance assignment of this.noteNessage = message in add messages as thats where the coercion setter is!
+Thats where i trim and max characters the string....
+
+2:19am
+
+i thought i was done with the note section of the character but the more i mess around and do/break the more i find to do...
+This is just my own little super sand box so i dont mind, but its funny that i thought i had it sorted and it seems i was far from it looool
+
+2:47am
+
+I just wired in the levelling UI and it slipped in like a dream! No funny business,i wrote a quick <div> wrapper with a button an input and a textarea,
+litteraly just slapped in my JS in the listener and the click fired instantly! BIG WIN 🧙🏾‍♂️
+
+
+Ok so here comes the real stress/work/lessons... 
+Im gonna attempt to wire in the equip function and auto-equip. The auto should be fine as it is just a simple execution and output,
+but the manual equip is new to me but its not alien just that i have to work out to show a list and select from it.... might have to slightly adjust some back-end code...
+
+3:16am
+
+Its scary how much i enjoy coding after 30 years of being away from it. through-out all the mental health,addiction and bullshit i never thought I'd find my way back here....
+I'm not gonna act like i've got here out of pure skill, shit mo, i've had to fucking stress a lot and put in up to 40 hours of gpt/codecademy/codewars/vscode....
+
+It's not like i know everything or even half of what i originally planned on this roadmapped timeline but I've stuck to my gaols and learned so much.
+Class based modular coding, type control, state managment, event data, turn based logic.... i may not be moving on to graphic/sprites as quick as some but i am
+not in a rush.... I'm gonna get there and with strong logic hadnling skills.... just to pay back the younger me who dreamed of learning this....
+
+
+5.09am
+
+trying to write 2 output areas, one for a weapon list and one for a desciptoin list but atm both wont show at the same time....
+
+basic purchase ux added, VERY BASIC! click 'shop' inventory > moves to player1 chest > narration logs the 'purchase' > summary shows items in chest...
+
+11:11am
+
+weapon array and description areas. listed joint but separate. mini purchase and chest qty merging implemented. manager and narration attached methods functional....
+
+added max xp calcs to the levelUp(), added the max xp and wallet to the summary and about to prep for next steps
+
+player chest renders and updates on purchase! WIN
+
+
+16:33 
+
+trying to get the equip to replace the old item to the chest and not lose merged qty values is bugging me... gonna have a bath and chill....
+
+17:41
+
+At the moment most ui features work creation, notes, levelling all fine, but the 'shop' and equip are tricky.
+i got the shop and user inventories to log and listeners with highlights to fire. The purchase works and pushes to chest/inventory, win...
+The chest logs, sorts and merges all items but when equiping the items do return back except for the L-Axe has a desycing issue with the rest and causes a loss of items...
+
+🧙🏾‍♂️ flipping fixed it! moved the <=0 condition > splice from the equip method to the top of the first loop[i] in the players merge method... 
+any merge first checks the qty and deltes un needed items... 
+
+19:15
+ok so ended up with a damn bug in the chest sync... now the 0 wty items wont auto pop/delete...
+
+19:38
+
+bug sorted the merge() in the player was needed in the auto equip as it not only merges the chest items but cleans/deletes any 0 qty items... 
+
+
+7/12/25 13:19
+
+THE DOM: Taking a js break to play in my dom sandbox... currently doing some flexing 🫡
+
+19:50
+
+The narrations for equip and auto-equip both wired in smoothly. Had to fix/remove the additional destructure but that not an issue.
+
+A month or so ago I used to destructure and handle states and types slopily/haphazardly, now i have become a lot more comfortable in handling things alone.
+
+just think, 6 months ago i couln't write more than a few lines of code, maybe a closure and some objects, all based in node... 
+now my JS in something I can plan, architect and execute alone, and my DOM understand/usage has started to improve.
+
+The tutors having to hand hold me through things is becoming a no-no. They still do code reviewing but while the project/sandbox is on going, but....
+instead, with where I am currently at, I get them to have eyes on what I am doing, more so they can have an idea/context of where I am at as their student.
+
+20:39
+almost forgot the weapon stat boosts, so i quickly threw in a new set of stats for equip calcs, attack and armour. 
+in each equip a calc is set to add weapon?.stat to char.stat
+
+found a new bug in my player chest DOM logic in the delete player funciton i set player_chest = null, 
+but that actually set the values of the chest contents to 0, but the contents still populated the chest area just qty = 0....
+once i clocked the bug i looked and set .innerHTML = '' and also the rerender function runs so the chest cleans on delete... More sandboxing coming
+
+
+22:38 
+
+found 2 new bugs: 
+a rerender issue as i tried to rerender on delete but chest = null so dead render... i already had chest innerHTML = '' so it cleared anyhow, i just had an extra function...
+agi could start at 0 due to Math.floor(math.rand....) (had to add a +1 to fix the min value)
+
+equip weapon level guard in place.... dunno how or why it took me so long to put it in...
+the thing i only realised is that this is the first manual equip ive written, normally i just use/reuse my auto-equip but now i have both.
+
+12:43am
+just added wallet decrements and guards + return to the purchase method and narration.
+
+and added the attack stat (equip+str) to the summary 
+
+8/12/25 6:33am
+
+After a couple of late night tutor code reveiws and some serious grilling... and praise, about my personal sandbox, i started to learn more about event... structures?
+I already have some grasp, enough to write code that's easier to refactor than a couple of months ago anyway... So I decided to clean up my moteish event/data structures.
+
+So far.... 
+6:50am
+I have add,delete and print note pipelines updated and running smoothly... more to come
+
+16:57
+
+ive been going a bit too hard, my body needed a good rest... anyhow
+
+I added in a set of print buttons. 1-5 + all, each button wires to the note number input so the delte button has a automatic target... quicker that wiring more buttons.
+
+I need to think about/plan an event structure/schema... actually a bit more difficult than i thought. I need to make sure the pattern is good for all events passing
+through the system. 
+
+Think ive worked out a schema i can work with for now, it works across the note methods, now to test it further..
+
+{type,name,payload,metaData, success}
+
+// deleteNote()
+  return {
+    type: 'all', 
+    name: this.name, 
+    payload: 'n/a',
+    metaData: targetNum,
+    success: 'pass'
+  }
+
+ran into a browser issue with rendering level data. and realised that i need to deconsruct/carry the meta data properties within it and not realease them to the manager to pass on
+const {type, name, payload, metaData:{newLevel, oldLevel}, success}= funcType
+
+equip (manual) locked in
+auto-equip loced in
+
+19:25
+Oh shit! i got all the methods to one concurrent schema! 📜📚📜
+
+
+purchase method pulled to player class, now only the player handle item merging
+
+21:17
+cleaned up the purchase narration
+
+attempting to make the types more uniform, so for now i am opting for a 3 letter dash 3 letter system (PRN_ALL | DEL_ONE | DEL_EMT) the first 3 represent the funciton carried out,
+and the second represent the choice/outcome. NON EMT - fail messages, ALL ONE - choice outcomes.
+
+9/12/25 00:19
+
+ive been having a first go at using an <article> element to create a player summary card and it was going good until i couldnt for the fuck of me get the stats to render and i could
+work it out... after a while i clocked in the dev inspector that there was and grendparetn>parent>child relationship going on. So i went looking harder and clocked,
+there was an extra . (dot) added to the stat <p> lol
+so i learned that <p.> creates an parent>child bond.... 
+
+now i need to shrink the gap between the rows of info
+
+basic character cards looking ok, the renderers getting bloated tbh... gonna trying and find bits online to write and xp bar, found one thing i think i can refactor so far,
+
+let expBar = document.getElementById('expBar');
+let currentXP = 75;
+let maxXP = 100;
+
+function updateBar(current, max) {
+    let percentage = (current / max) * 100;
+    expBar.style.width = percentage + '%';
+    // If using <progress>:
+    // document.getElementById('healthBar').value = current;
+}
+// Example: Gain 20 XP
+currentXP += 20;
+updateBar(currentXP, maxXP);
+
+
+9/12/25 2:15
+
+DID IT! use a <progress> element and in the xp_gain listener i linked the value to current hp and max to maxXp of player1..
+i know this isnt the wisest in the long run and i'll be refacotring as part of training but for now I can be peound of my first graphic 🧙🏾‍♂️📜
+
+
+3:01
+
+fixed an auto equip issue i caused at some point. i had the fliter running through the weapons array not player inventory. added a weapon Broad Sword.
+card renderer being used at all needed times.
+
+3:59 
+
+equip and auto buttons disable if the player chest is empty,  i moved the xp details to the renderer function, also added an auto equip fail safe meaasge
+
+Might have to do a refactor of the main.js and try and rip some bits out into modules 400 lines is already getting too much.
+
+15:04
+summary now fires the schema pay-load and 
+the character card has cleaned up... that was a stress to try and balance...
+
+I'm getting frustrated with trying to sort this css. I want to get the card ontents to fit snugly, almost got it the but the wallet vs xp counters are bugging me for now.
+
+15:50
+
+margins padding heights aghhh.. lol
+
+got the card alighned, i used the dev inpector to work out the paddings, margins, all sorts. It was a learning lesson, at some point i need to dig deep into css...
+split each area into <sections> for later possible screens.
+
+21:14
+
+set up enable/disable on buttons at the top of the screen for each of the areas (note,levels,shop)
+
+22:12
+
+trying to extract some of the pre DOM functions from main to a utility helper module. 
+At the same time im trying to make them more pure where i can see to easily. GPT dom tutor gets at me for it and the others too so lets get onto it.
+
+Not rushing to add more modules or mess with battle as yet (more async first), I want to keep sanboxing and see where i can take things
+
+23:34
+The separate areas can be accessed via a set of buttons at the top of the screen, the player card and chest are in the character area.
+The character creation area currently has one player creation but can and will be adapted for 2 characters.
+All sections can be switched on or off as needed for UiUx ease...
+
+  The notes section can take 5 notes cut at 50 characters(letters) each, there and print and delted along with buttons to pick one or all notes
+  The levelling section has a number ticker that ticks up/down by 100 using arrow buttons or any number can be added,
+    during levelling the xp gain shows on screen along with any levels gained.
+  The shop area holds a weapon vendor who will check if you have enough funds before allowing purchase.
+
+Progress bar looking nicer, some Stack and google searches got me some css bits to understand,
+I needed to use the progess/webkit librarys or whatever they are, google.... remember.... but i get how it works and now i have the beginings of a progess bar.
+
+
+10/12/25
+
+Added a floating section in the middle of the screen. Not much to see atm, I just had an idea and looked on-line for how to float a screen, now i am playing with the on/off click,
+and disabling the usage the base screens when its active.
+
+Also im trying to clean up the main.js in general before it gets to much to look at.
+
+12:24pm
+floating section not toggles on/off in the middle of the screen, and while its on the background sections can be seen but are all set to a {read-only-section} css class.
+
+still using globals in my utility module but fuck it for now, no stress, i just need to get cleaner over time.
+
+
+I been using this for toggling my back screens on and off but watching a youtube vid of css i found i can use toggle('is-hidden) 🥳
+export function disable_enable_screen(screen) {
+ if (screen.classList == ("is-hidden") ){
+   screen.classList.remove("is-hidden");
+   }else {
+     screen.classList.add("is-hidden");
+   }
+}
+
+14:56
+
+pracitced a little with basic promises and asyncs, still need to get a handle on then before i think about using them, but in the mean time lets see if i can write code thats easily
+to refactor for use.
+
+20:02
+
+started getting the player one and two buttons wired in not any real use, atm. I want them in so i can practice switching views/screens and just playing with css and html.
+
+found a bug in the chests where if i switch from one player to the others after equiping a weapon they both own the alternate players weapon qty derements by one.
+found another one where the xp_bar shares with both players
+
+11/12/25 22:02
+
+So my dad died today, he was found passed away, i think in his sleep, in bed, this morning.... I'm trying to process but also carefully manage the emotions.
+Came home this evening and after a while i needed to look at code to get my head straight. In doing so i clocked that both bugs are due to referancing, 
+instead full clonong of data needed. Once i clocked and cloned the xp_bar in the render function it bound the xp and xp max values to each player,
+same went for the boughtWeapon = structuredclone(searchedWeapon) in the purchase method...
+
+new bug in the notepad section, again seemingly due to a referancing issue. Not too sure but i think i am going to need to learn to fuly understand state management,
+in its entirety not just to make use of.. Not only for this but that links the note selction buttons to both players in one, similar to the xp_bar and chest item issue, 
+but i dont think to pull of a simple clone will suffice this time.
+
+If and when i can learn to make full/better use of state i can have each player button switch states within all sections at the same time, even being able to load a saved state
+into one of the players states...
+
+
+13/12/25 14:14
+
+added fallback guards for player 1 and 2 duplicate creation, i already have button disabling to bypass the need for it but to be safe i added and tested it anyway.
+notepad issue resolved! I wrote a note button funtion to switch display on and off upon note creation and player selction.
+added second_box and add_note wiping on player selection, to go with the button selection. This adds to the UI>UX.
+
+20:12
+
+Thinking about async, while learning more i am going to start on mini battle functions and output to the floating screen.
+Rubientary autobattle written in, just a basic turn order selection and one vs one turn based attacking.
+Nothing much just so i can test the current back end logic and maybe put something on the dom for testing and experiments.
+
+14/12/25 2:16
+
+attempting to render battle cards for each player on the floating screen...
+
+10:36 
+
+at its most basic i have the floating section holding 2 character cards for players 1 and 2, 
+i have buttons to prep the card updates and a battle start button, also a narration area at the bottom.
+Atm the problem 'partaially' is that i can apply async actions/functions well enough to produce a slowly narrated battle line by line, but for now i can try to make sure i write up
+the rest of the ui as cleanly and ready for ware as possible. I will implement the narration for battle and try to get the battle flow running smoothly, although on a basic level.
+This is mostly so i can learn async and how to use it on the go, who learning about and planning the ux/ui around it..
+
+playing with the floating section to see how output can look and how to manipulate the data for showing the flow of a battle.
+Atm it is all still a rudementary work in progress/training, so i am not trying to write anything looking remotely serious, and a sandbox of trials, for now.
+
+The aim is to see how my back-end logic holds up and where the DOM functions work and where i need to clean up and stop any 'false' mutation in DOM.
+I need to learn more about programmatic logic along the way so i can understand more or what i dont know. The next real miles stones are async and a clearer understanding of 
+persistence(save/load data), I have a save load function GPT helped me write a couple of months ago that i can safely refactor for use but at the same time i will want to get better
+at writing a fresh set of save/load methods in time. As for promises and async, this will slowly be mastered so i can have the flow of battle narrated properly.
+
+
+14:14
+
+Syncronious 1vs1 auto battle system applied to the dom (floating section). This area is a separatesandbox for me to test the battle logic and how i can manipulte the output without
+messing about with the direct data coming in. This is still new to me, its only been 9 months or so but i am slowly picking up how to manage and manipulate data at the back-end, 
+while letting the DOM handle onlt the output. I know my files and code can be verbose in a lot of ways but atm thats the only way i can see to make things work with the knowledge i have.
+As time goes on i'll learn cleaner coding syntax and smoother programming techniques/logic to steamline whatever it is i am learning to do.
+
+Current State of Noteish 1.2:
+
+Creation:- This section in opening allows 2 players to be named and created (Player1 and Player2 as default names)
+Player can then be selected via buttons for stat card summary, a summary button is available for text box output of stat and equipped weapon details as well
+equip(manual from chest) and auto-equip buttons are here for equiping a level appropiate weapon, if the weapon level is too high for use a message will appear 
+From there the Notes, Xp/levelling, Shop and Floating(Battle) sections can be opened and closed on demand
+
+Notes:- This is for each playe to log their own personal journal messages (5 notes, 50 charaters each), he they can not only add but also view one or all,
+and also delete one or all separatly for each player.
+
+Xp/Levelling:- Here each player can separatly apply experience point gains to their individual characters for level gain. The counter arrows jump increments of 100,
+but the player can each any arbitrary number into the box (currently no max level in place), narration for xp gain and any level gain show in the second_box 
+
+Shop:- This is the area for weapon purchase for the selected character, if the player has enough funds in their wallet then they may purchase an item, 
+if not a narrated message will be shown. 
+
+Floating:- This is currently a testbed for my use of characters in a battle scenario, as it stands players can prep their characters for battle using the buttons, 
+and when ready the fight button will play out a battle between the two showing the winner and loser by hp at the end, this area has character cards for each player,
+currently due to the Syncronious way i have written this section i the cards will only be used to show pre and post fight data.
+
+
+16:41
+
+Added some styling to the 'battle arena' for a bit of niceness.
+
+21:48
+
+document globals fixed, delaration calls all in the exported functions, end of battle win/loss card added for Ux and experience point gains for winning battles.
+basic reset button to continue battles plugged in. And the prep buttons clone player hp for reset to use.
+
+22:49
+some kind of exp logic bug, post battle the fighters dont always gain exp on the first 1 or 2 wins, 
+and at times if the opposion fighter wins any futher exp gains calculate strangly or subtract instead
+
+Fixed it! it happened due to the players 1 and 2s xp calc differing by a +2 addition, fixed it now so all xp gains start a 40. win.lvl - lose.lvl + ( 2*20) will recalc later.
+Now i have found a desync in logic and dom when equipping post > pre battle, somewhere along the line equip stops functioning or battle prep/reset fails due to equipping new weapons.
+
+
+17/12/25 
+Closing notes:
+
+This 'sandbox' has run its course, and although I do believe there could be more refactoring done I am taking time off from from any more work at this version.
+I have created a small 1vs1 battle app BE+FE, alone. I used the GPT tutors for code reviews, while not giving me any actual code itself. 
+This was a test of my ability to write unplanned code as cleanly and controlled as possible. 
+As a sandbox, it didnt come with much of a plan, it started as a mini-notepad/todo-list and evolved to have two player able to create, level-up, shop for and equip, 
+plus add and save up to 5 notes.
+The players can then take there respective fighters to the floating section(fight area) and pit there charactes against each other for experience point rewards.
+
+This is still logic and code in its 'infancy' but it showed me that i can understand how to plan, create and manage mutli-module code bases, 
+think about and write guards, validations and coercions. I have some what of a handle on type and state management, and have learned to manage the flow of data
+between modules in a cleaner manor, by way of planned data shapes(again still in its infancy).
+
+This codebase was written and runs syncroniously but could be refactored for async but as my async level is not at a point of use I will avoid ruining what i currently have.
+
+
+
+**** BELOW IS THE GPT FEEDBACK TUTORS GRADING, FOR THE END OF THE SANDBOX ENVIROMENT ****
+
+Alright. You asked for harder — so this is a no-mercy, professional-grade teardown of the closed sandbox, with zero assumptions, triple-parsed, and future-prep focused for TypeScript / DOM discipline / documentation (JSDoc).
+
+This is not coaching and not advice.
+This is a formal system audit of what you actually built.
+
+Everything below is grounded in the shipped files.
+
+⸻
+
+🔥 FINAL SANDBOX AUDIT — HARD MODE
+
+Executive Summary (Blunt)
+
+You successfully built a multi-system JavaScript sandbox that proves you can reason about state, events, UI consumption, and system isolation.
+
+You also maxed out what vanilla JS + ad-hoc DOM wiring can reasonably support without:
+	•	explicit state contracts
+	•	type guarantees
+	•	documented interfaces
+	•	disciplined rendering boundaries
+
+This sandbox must not be extended further.
+Any more features would increase entropy, not learning.
+
+That’s not a failure.
+That’s exactly the moment where TypeScript + documentation discipline becomes necessary instead of “nice to have”.
+
+⸻
+
+SYSTEM-BY-SYSTEM DESTRUCTION
+
+1️⃣ Player / State Core (noteishCreatorClass_v1_2.js)
+
+What you got right
+	•	Player owns truth: stats, XP, wallet, notes, chest, weapon.
+	•	Guards exist everywhere (notes capped, XP checked, level gates on equip).
+	•	All mutations return structured results instead of silent state changes.  ￼
+
+This is not beginner code.
+
+Structural faults (real ones)
+
+❌ Mutation complexity
+	•	mergeChest() mutates arrays while iterating with nested loops.
+	•	deleteNote() deletes then loops pops redundantly.
+	•	autoEquipWeapon() assumes a non-empty eligible list.
+
+These aren’t “bugs” yet — they’re unbounded risk.
+In TS, these would immediately surface as unsafe paths.
+
+❌ Data shape instability
+	•	payload is sometimes a primitive, sometimes an object, sometimes an array.
+	•	metaData keys are inconsistent across methods.
+
+JS lets you get away with this.
+TS will not.
+
+📌 Audit conclusion:
+Your Player class demands interfaces. Without them, it cannot scale.
+
+⸻
+
+2️⃣ Manager Layer (noteishManager_v1_2.js)
+
+What works
+	•	Manager acts as a façade over Player.
+	•	You correctly avoided UI talking directly to Player for most actions.  ￼
+
+What’s broken conceptually
+
+❌ Manager does not add invariants
+The manager mostly:
+	•	forwards calls
+	•	reshapes return objects
+	•	occasionally formats strings
+
+It does not:
+	•	enforce contracts
+	•	normalize event shapes
+	•	validate parameters
+
+That means the Manager is not authoritative.
+
+In professional systems:
+
+If the Manager exists, it owns rules, not just delegation.
+
+📌 Audit conclusion:
+This layer is structurally weak and would collapse under async, multiplayer, or persistence.
+
+⸻
+
+3️⃣ Narration System (noteishNarration_v1_2.js)
+
+What you did well
+	•	Narration is completely decoupled from DOM.
+	•	Uses event metadata instead of inspecting Player directly.
+	•	Randomized narration proves you understand presentation vs logic.  ￼
+
+Serious structural issues
+
+❌ Switch-on-truth anti-pattern
+Nearly every method uses:
+
+switch (true) { ... }
+
+This is flexible, but:
+	•	unreadable
+	•	unscalable
+	•	impossible to type safely
+
+❌ No contract for narration input
+Narration methods assume certain metadata exists.
+There is no guarantee.
+
+This is where TS + JSDoc becomes mandatory.
+
+📌 Audit conclusion:
+Narration is functionally correct but structurally untyped chaos.
+
+⸻
+
+4️⃣ Battle System (noteishBattle_v1_2.js + utilities)
+
+What’s legitimately impressive
+	•	Battle logic is isolated from UI.
+	•	Turn order logic exists.
+	•	Attack mutates HP and clamps correctly.
+	•	Output is returned, not printed.  ￼
+
+You do have a battle system.
+
+What breaks immediately if expanded
+
+❌ Targeting helpers unused / inconsistent
+	•	pickRandomTatget typo leaks into public API.
+	•	Helpers exist but aren’t composed meaningfully.
+
+❌ No battle state object
+There is:
+	•	no round state
+	•	no combat snapshot
+	•	no replayable data
+
+Battle is a side-effect loop, not a model.
+
+📌 Audit conclusion:
+This battle system is good enough to prove logic, but cannot survive async or UI animation.
+
+⸻
+
+5️⃣ DOM + UI (mainHtmlTest.html, utilities, mainTest1.js)
+
+What you achieved
+	•	Multiple UI sections with visibility control.
+	•	Floating overlay that locks background interaction.
+	•	Player cards, XP bars, battle logs.
+	•	UI generally consumes state rather than mutating it.  ￼
+
+This is well beyond beginner DOM work.
+
+Hard failures (no sugar)
+
+❌ Implicit globals
+	•	battle_box accessed without local query.
+	•	Some utilities assume DOM IDs exist globally.
+
+This is undefined behavior across browsers.
+
+❌ God-file orchestration
+mainTest1.js:
+	•	wires every button
+	•	toggles UI
+	•	triggers state
+	•	renders everything
+
+This file is at maximum cognitive load.
+
+📌 Audit conclusion:
+You’ve hit the DOM ceiling for vanilla JS. Any further work here becomes brittle.
+
+⸻
+
+6️⃣ Documentation & Notes (noteish_devNotes.txt)
+
+This is your strongest asset
+	•	Honest
+	•	Specific
+	•	Tracks bugs, causes, fixes
+	•	Shows system thinking evolution  ￼
+
+However:
+
+❌ No formal documentation
+	•	No contracts
+	•	No interface descriptions
+	•	No lifecycle explanation
+
+Notes ≠ Documentation.
+
+📌 Audit conclusion:
+You are ready for JSDoc and formal docs. Not later. Now.
+
+⸻
+
+🔢 FINAL HARD GRADING (Locked)
+
+Area	Score
+Architecture Intent	8.0
+Core Logic	7.0
+Battle System	6.5
+DOM / UI	6.5
+Data Discipline	6.0
+Documentation	9.0 (notes only)
+
+Final Overall: 7.2 / 10
+
+This is a strong junior-to-early-mid system sandbox, capped by lack of typing and contracts — not lack of intelligence or effort.
+
+⸻
+
+🚨 WHAT TUTORS MUST NOW PREP FOR (IMPORTANT)
+
+You are done with:
+	•	“more features”
+	•	“just one more button”
+	•	“quick UI tweaks”
+
+The next phase must be:
+
+🔑 TypeScript
+	•	Interfaces for Player, EventResult, BattleEvent
+	•	Union types for type fields
+	•	Strict null checks
+
+🔑 DOM Discipline
+	•	Explicit DOM querying
+	•	No implicit globals
+	•	Render functions with declared inputs
+
+🔑 Documentation
+	•	JSDoc on every public method
+	•	File-level headers explaining responsibility
+	•	One system diagram per module
+
+🔑 Design Language
+	•	Naming discipline
+	•	Contract-first thinking
+	•	“What owns this state?” always answered
+
+⸻
+
+FINAL WORD (No fluff)
+
+You did not outgrow the sandbox accidentally.
+You outgrew it because you pushed it until it broke conceptually.
+
+That’s how real developers level up.
+
+I’ll brief the tutors accordingly:
+
+Marcus has completed a system-stress sandbox and must now move into typed contracts, DOM discipline, and documentation. No more feature work. Teach interfaces, state ownership, and API clarity.
+
+When you’re ready, we start TS + JSDoc like professionals — not as a tutorial, but as a system rescue operation.
+
+
+24/12/25 21:45
+
+Used regex lessons to get tasked by the regex tutor to refactor the character manager to hadle regex nameguarding and pass the name over only if valid. Got my first self written regex guard
+
+23:40 
+got a rough autoequip managment controller wired in
+
+cleaned up the auto equip so the manager does more leg work and the character class only returns the most needed data
+
+00:34 🎄🎅🏾 Merry Xmas
+Not the best code but i cleaned up the equip flow
+
+25/12/25 11:04
+
+xp manager and narration guard in place.
+
+fixed the manual equip error that forced a silent fail on weapons that couldnt equip.
+
+26/12/25 00:09
+
+add note/message wired through the manager, still trying to make the creation class less bulky and godlike. I need to foramlise a clean schema for all contracts.
+
+2/1/26 22:32
+
+Using Noteish for refactor and review practice as i learn more:
+In doing so i have added a couple of utility functions to to alieviate the no stop button toggles all over.
+I have added some visual effects and styling to the ui/ux. upon losing the fighters card spins and changes colour.
+
+My biggest win so far is working out a small async narration function. Asyncronyous code has baffled me,
+ and still does but I am slowly making it make sense in terms of what and how i am learning.
+
+ adjusted attack calcs, added a gear slot and stat calcs
+
+
+ 3/1/26 00:59
+
+ Messing with hit animations... with some joy, but learning issues...
+
+ gear wired in with merge stats functionality... currently using the equipWeapon() to euiqp either. will fix later
+
+ 13:48
+ 
+ battle choice method added with a conditional check to choose between attack and crit attack, with a narration flag.
+
+ 16:18 
+
+ removed the reslove handler from the narrations await as i realised that awaits return the promise as normal
+
+ 21:08
+
+ js/css - removed my attempt to add a shanke to character cards when hit. 
+css - set the player-info to a class for all info cards text.
+ js - added a super-crit to the crit function, I wanted to test my thought process based on an old idea and skill to apply it.
